@@ -40,9 +40,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Standard movement script
         float inputX = Input.GetAxisRaw("Horizontal");
-        Debug.Log("X " + inputX);
         float inputY = Input.GetAxisRaw("Vertical");
-        Debug.Log("Y " + inputY);
         movement = new Vector2(inputX, inputY);
 
         transform.Translate(movement * speed * Time.deltaTime);
