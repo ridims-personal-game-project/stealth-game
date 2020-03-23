@@ -25,12 +25,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     private SpriteRenderer mySpriteRenderer;
     bool isFacingRight = true;
+    GameObject flashlight;
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake()
     {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+        flashlight = GameObject.Find("Flashlight");        
     }
 
     /// <summary>
@@ -46,9 +48,10 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(movement * speed * Time.deltaTime);
 
         if(inputX == -1 && isFacingRight){
+            flashlight.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
             mySpriteRenderer.flipX = true;
-        }
-        if(inputX == 1 && isFacingRight){
+        }else if(inputX == 1 && isFacingRight){
+            flashlight.transform.localRotation = Quaternion.Euler(0f, 0f, -90f);
             mySpriteRenderer.flipX = false;
         }
     }
